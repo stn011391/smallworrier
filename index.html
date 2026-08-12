@@ -4,15 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
 <meta name="theme-color" content="#17233f">
-<meta name="description" content="勇者學院 V4.7：30 大地下城、150 場主線怪獸戰、超大型動態題庫、隨機事件、隨機商店、寶箱、稀有怪、技能與裝備養成。">
-<title>勇者學院 V4.7｜30 關大型冒險版</title>
+<meta name="description" content="勇者學院 V4.8：30 大地下城、150 場主線怪獸戰、超大型動態題庫；關卡完成後永久鎖定不可重複挑戰。">
+<title>勇者學院 V4.8｜30 關一次通關制</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="app">
-<header class="top"><div class="brand">⚔️ 勇者學院 V4.7｜30 關大型冒險版</div><div class="hud"><div class="pill">Lv.<span id="lv">1</span></div><div class="pill">⭐ <span id="stars">0</span></div><div class="pill">🪙 <span id="coins">0</span></div><div class="pill">🔥 Combo <span id="combo">0</span></div><div class="pill">🍎 <span id="bagP">0</span>　🔷 <span id="bagE">0</span>　🔑 <span id="bagK">0</span></div></div></header>
-<section class="hero"><div><h1>30 關世界冒險，想玩多少就玩多少！</h1><p>六大章節、30 個地下城、150 場主線怪獸戰。每關仍有五怪、Boss、隨機事件、隨機商店、寶箱與稀有怪；題目會依關卡逐步增加多步驟數學、分數、小數、幾何、英文閱讀、科學與邏輯混合。</p><button class="btn gold" onclick="startAdventure()">開始 30 關冒險 ⚔️</button> <button class="btn soft" onclick="resetGame()">重設遊戲</button></div><div class="art">🧑‍🚀⚔️🗺️🐉</div></section>
-<section class="card"><h2>🗺️ 30 大地下城｜6 章自由挑戰</h2><p class="sub">不限每日關數、不限挑戰順序；每 5 關一個章節，總共 150 隻主線怪獸。最近 40 題會避免重複。</p><div class="map" id="map"></div></section>
+<header class="top"><div class="brand">⚔️ 勇者學院 V4.8｜30 關一次通關制</div><div class="hud"><div class="pill">Lv.<span id="lv">1</span></div><div class="pill">⭐ <span id="stars">0</span></div><div class="pill">🪙 <span id="coins">0</span></div><div class="pill">🔥 Combo <span id="combo">0</span></div><div class="pill">🍎 <span id="bagP">0</span>　🔷 <span id="bagE">0</span>　🔑 <span id="bagK">0</span></div></div></header>
+<section class="hero"><div><h1>30 關自由挑戰，完成就鎖定！</h1><p>30 個地下城都可以自由選擇、一天不限關數；但每一關完整攻略一次後就會標記完成並鎖定，不能再次挑戰。想全破就一路把 30 關逐一完成。</p><button class="btn gold" onclick="startAdventure()">開始 30 關冒險 ⚔️</button> <button class="btn soft" onclick="resetGame()">重設遊戲</button></div><div class="art">🧑‍🚀⚔️✅🔒🐉</div></section>
+<section class="card"><h2>🗺️ 30 大地下城｜完成即鎖定</h2><p class="sub">不限每日關數、不限挑戰順序；未完成關卡隨時可玩，已完成關卡會顯示「✅ 已完成｜不可再挑戰」。最近 40 題會避免重複。</p><div class="map" id="map"></div></section>
 <section class="card"><div id="screen"></div></section>
 <section class="card"><h2>🎒 裝備與道具</h2><div id="inventory"></div></section>
 <section class="card"><h2>📜 任務</h2><div class="quests" id="quests"></div></section>
