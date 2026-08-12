@@ -4,15 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
 <meta name="theme-color" content="#17233f">
-<meta name="description" content="勇者學院 V4.10：30 大地下城、英文固定佔三分之一；答錯會直接扣 HP，HP 歸零需在檢查點復活。">
-<title>勇者學院 V4.10｜答錯扣 HP 版</title>
+<meta name="description" content="勇者學院 V4.11：30 大地下城、英文固定佔三分之一、答錯扣 HP；真正寶箱必須消耗鑰匙才能開啟，補給木箱則可直接開。">
+<title>勇者學院 V4.11｜寶箱鑰匙規則版</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="app">
-<header class="top"><div class="brand">⚔️ 勇者學院 V4.10｜答錯扣 HP 版</div><div class="hud"><div class="pill">Lv.<span id="lv">1</span></div><div class="pill">⭐ <span id="stars">0</span></div><div class="pill">🪙 <span id="coins">0</span></div><div class="pill">🔥 Combo <span id="combo">0</span></div><div class="pill">🍎 <span id="bagP">0</span>　🔷 <span id="bagE">0</span>　🔑 <span id="bagK">0</span></div></div></header>
-<section class="hero"><div><h1>答錯，怪獸真的會扣你的 HP！</h1><p>每 3 題固定有 1 題英文；答錯時怪獸會立刻反擊並扣 HP。普通怪傷害較低，進階怪、精英怪與 Boss 更痛；HP 歸零後必須在檢查點復活才能繼續戰鬥。</p><button class="btn gold" onclick="startAdventure()">開始 30 關冒險 ⚔️</button> <button class="btn soft" onclick="resetGame()">重設遊戲</button></div><div class="art">🧑‍🚀⚔️💔🐉</div></section>
-<section class="card"><h2>🗺️ 30 大地下城｜完成即鎖定</h2><p class="sub">未完成關卡可自由挑戰；已完成關卡不可再挑戰。英文約佔 1/3；答錯會扣 HP，防具 DEF 可以減少傷害。</p><div class="map" id="map"></div></section>
+<header class="top"><div class="brand">⚔️ 勇者學院 V4.11｜寶箱鑰匙規則版</div><div class="hud"><div class="pill">Lv.<span id="lv">1</span></div><div class="pill">⭐ <span id="stars">0</span></div><div class="pill">🪙 <span id="coins">0</span></div><div class="pill">🔥 Combo <span id="combo">0</span></div><div class="pill">🍎 <span id="bagP">0</span>　🔷 <span id="bagE">0</span>　🔑 <span id="bagK">0</span></div></div></header>
+<section class="hero"><div><h1>寶箱要鑰匙，補給木箱才可以直接開！</h1><p>每 3 題固定有 1 題英文；答錯會扣 HP。地下城中的真正寶箱現在一定要消耗 1 把寶箱鑰匙才能開啟；只有沒有上鎖的補給木箱可以免費打開。</p><button class="btn gold" onclick="startAdventure()">開始 30 關冒險 ⚔️</button> <button class="btn soft" onclick="resetGame()">重設遊戲</button></div><div class="art">🧑‍🚀⚔️🔑🔒🎁</div></section>
+<section class="card"><h2>🗺️ 30 大地下城｜完成即鎖定</h2><p class="sub">未完成關卡可自由挑戰；已完成關卡不可再挑戰。英文約佔 1/3；答錯扣 HP；🔒 寶箱沒有鑰匙就不能開。</p><div class="map" id="map"></div></section>
 <section class="card"><div id="screen"></div></section>
 <section class="card"><h2>🎒 裝備與道具</h2><div id="inventory"></div></section>
 <section class="card"><h2>📜 任務</h2><div class="quests" id="quests"></div></section>
@@ -28,6 +28,7 @@
 <script src="questions30.js"></script>
 <script src="english33.js"></script>
 <script src="events.js"></script>
+<script src="chest-lock.js"></script>
 <script src="battle.js"></script>
 <script src="hp-penalty.js"></script>
 </body>
