@@ -4,15 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
 <meta name="theme-color" content="#17233f">
-<meta name="description" content="勇者學院：給 9 歲孩子玩的 RPG 學習闖關遊戲，結合數學、英文、科學與邏輯。">
-<title>勇者學院 V4.3｜9歲 RPG</title>
+<meta name="description" content="勇者學院 V4.4：給 9 歲孩子玩的 RPG 學習闖關遊戲，每區五隻怪獸、隨機遭遇、Boss 戰，結合數學、英文、科學與邏輯。">
+<title>勇者學院 V4.4｜五怪隨機遭遇版</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="app">
-<header class="top"><div class="brand">⚔️ 勇者學院 V4.3｜9歲 RPG</div><div class="hud"><div class="pill">Lv.<span id="lv">1</span></div><div class="pill">⭐ <span id="stars">0</span></div><div class="pill">🪙 <span id="coins">0</span></div><div class="pill">🔥 Combo <span id="combo">0</span></div></div></header>
-<section class="hero"><div><h1>先選怪獸，再開戰！</h1><p>這版修正敵人選擇。每區可先挑兩隻精英怪，打倒兩隻後才解鎖 Boss。答對題目才能放技能。</p><button class="btn gold" onclick="startAdventure()">進入地下城 ⚔️</button> <button class="btn soft" onclick="resetGame()">重設遊戲</button></div><div class="art">🧑‍🚀⚔️</div></section>
-<section class="card"><h2>🗺️ 七大地下城</h2><p class="sub">點地圖切換已解鎖區域。</p><div class="map" id="map"></div></section>
+<header class="top"><div class="brand">⚔️ 勇者學院 V4.4｜五怪隨機遭遇版</div><div class="hud"><div class="pill">Lv.<span id="lv">1</span></div><div class="pill">⭐ <span id="stars">0</span></div><div class="pill">🪙 <span id="coins">0</span></div><div class="pill">🔥 Combo <span id="combo">0</span></div></div></header>
+<section class="hero"><div><h1>探索、遭遇、打 Boss！</h1><p>每個地下城現在有 5 隻不同怪獸：2 隻普通怪、1 隻進階怪、1 隻精英怪、1 隻 Boss。每次進戰鬥都會出現不同的遭遇事件；打倒前四隻後 Boss 才會現身。</p><button class="btn gold" onclick="startAdventure()">開始探索地下城 ⚔️</button> <button class="btn soft" onclick="resetGame()">重設遊戲</button></div><div class="art">🧑‍🚀⚔️🐉</div></section>
+<section class="card"><h2>🗺️ 七大地下城</h2><p class="sub">每區 5 怪，共有 35 場怪獸挑戰。點地圖切換已解鎖區域。</p><div class="map" id="map"></div></section>
 <section class="card"><div id="screen"></div></section>
 <section class="card"><h2>🎒 裝備</h2><div class="inventory" id="inventory"></div></section>
 <section class="card"><h2>📜 任務</h2><div class="quests" id="quests"></div></section>
@@ -20,7 +20,6 @@
 <div class="qmodal" id="qModal"><div class="qbox"><div class="qtag" id="qTag"></div><h2 id="qTitle">答對才能出招</h2><div class="prompt" id="qPrompt"></div><div class="answers" id="qAnswers"></div></div></div>
 <div class="levelModal" id="levelModal"><div class="levelBox"><div style="font-size:82px">✨⚔️✨</div><h2>LEVEL UP!</h2><p id="levelText"></p><button class="btn purple" onclick="closeLevel()">繼續</button></div></div>
 <div class="toast" id="toast"></div>
-
 <script src="core.js"></script>
 <script src="questions.js"></script>
 <script src="battle.js"></script>
