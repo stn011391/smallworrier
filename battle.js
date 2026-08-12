@@ -12,7 +12,7 @@ function returnAfterRare(){battle=null;render();if($('statusText'))$('statusText
 function continueAdventure(){const w=worlds[st.world-1];battle=null;const all=w.m.every((m,i)=>defeated(w.id).includes(i));if(all){clearWorld(w.id);return}renderScreen();triggerDungeonEvent()}
 function returnToEnemySelect(){battle=null;render();}
 function checkLevel(){let leveled=false,lastGear=null;while(st.xp>=xpNeed()){st.xp-=xpNeed();st.level++;leveled=true;const g=gear.find(x=>x.lv===st.level&&!st.gear.includes(x.n));if(g){st.gear.push(g.n);lastGear=g}}store();if(leveled){$('levelText').textContent=`升到 Lv.${st.level}！目前 ATK ${attack()}、HP ${hpMax()}、MP ${mpMax()}、DEF ${defense()}${lastGear?'，獲得 '+lastGear.n:''}`;$('levelModal').classList.add('show')}}
-function closeLevel(){$('levelModal').classList.remove('show');render()}
+function closeLevel(){$('levelModal').classList.remove('show');renderHud();renderInventory();renderQuests()}
 function clearWorld(id){if(!st.cleared.includes(id)){st.cleared.push(id);st.stars+=20;st.coins+=10;store();toast(`🏆 Dungeon ${id} 五怪全攻略！`)}render();if(id<7){$('statusText').textContent='五隻怪獸全部擊倒！獲得 20 星＋10 金幣，下一個地下城已解鎖！';$('actions').innerHTML='<button class="btn gold" onclick="nextWorld()">前往下一區 ➡️</button>'}}
 function nextWorld(){if(st.world<7)openWorld(st.world+1)}
 function statText(g){return [g.atk?`ATK +${g.atk}`:'',g.hp?`HP +${g.hp}`:'',g.mp?`MP +${g.mp}`:'',g.def?`DEF +${g.def}`:''].filter(Boolean).join(' / ')}
