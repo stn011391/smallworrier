@@ -4,15 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
 <meta name="theme-color" content="#17233f">
-<meta name="description" content="勇者學院 V4.5：五怪地下城、隨機事件、隨機商店、寶箱、稀有怪、技能與裝備養成的 9 歲 RPG 學習遊戲。">
-<title>勇者學院 V4.5｜地下城事件＋裝備養成版</title>
+<meta name="description" content="勇者學院 V4.6：七大地下城不限次數自由挑戰，結合五怪戰鬥、隨機事件、隨機商店、寶箱、稀有怪、技能與裝備養成。">
+<title>勇者學院 V4.6｜不限關卡自由冒險版</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="app">
-<header class="top"><div class="brand">⚔️ 勇者學院 V4.5｜事件＋養成版</div><div class="hud"><div class="pill">Lv.<span id="lv">1</span></div><div class="pill">⭐ <span id="stars">0</span></div><div class="pill">🪙 <span id="coins">0</span></div><div class="pill">🔥 Combo <span id="combo">0</span></div><div class="pill">🍎 <span id="bagP">0</span>　🔷 <span id="bagE">0</span>　🔑 <span id="bagK">0</span></div></div></header>
-<section class="hero"><div><h1>每一步，都可能遇到驚喜！</h1><p>五怪地下城加入寶箱、補給泉、陷阱、岔路、稀有怪與「每次刷 3 件不同商品」的神秘商人。收集裝備、換武器、學技能，再去挑戰 Boss。</p><button class="btn gold" onclick="startAdventure()">開始探索地下城 ⚔️</button> <button class="btn soft" onclick="resetGame()">重設遊戲</button></div><div class="art">🧑‍🚀⚔️🎁🧙🐉</div></section>
-<section class="card"><h2>🗺️ 七大地下城</h2><p class="sub">每區 5 怪，共 35 場主線戰鬥；怪獸之間會穿插隨機事件與稀有怪。</p><div class="map" id="map"></div></section>
+<header class="top"><div class="brand">⚔️ 勇者學院 V4.6｜不限關卡自由冒險版</div><div class="hud"><div class="pill">Lv.<span id="lv">1</span></div><div class="pill">⭐ <span id="stars">0</span></div><div class="pill">🪙 <span id="coins">0</span></div><div class="pill">🔥 Combo <span id="combo">0</span></div><div class="pill">🍎 <span id="bagP">0</span>　🔷 <span id="bagE">0</span>　🔑 <span id="bagK">0</span></div></div></header>
+<section class="hero"><div><h1>想玩幾關，就玩幾關！</h1><p>七大地下城全部隨時開放，不限一天只能一關，也不必照順序。想連續挑戰、回頭刷裝備、直接挑高難度地下城都可以。</p><button class="btn gold" onclick="startAdventure()">開始自由冒險 ⚔️</button> <button class="btn soft" onclick="resetGame()">重設遊戲</button></div><div class="art">🧑‍🚀⚔️♾️🐉</div></section>
+<section class="card"><h2>🗺️ 七大地下城｜全部自由挑戰</h2><p class="sub">不限每日關數、不限挑戰順序；每區仍有 5 怪、Boss、隨機事件、商店、寶箱與稀有怪。</p><div class="map" id="map"></div></section>
 <section class="card"><div id="screen"></div></section>
 <section class="card"><h2>🎒 裝備與道具</h2><div id="inventory"></div></section>
 <section class="card"><h2>📜 任務</h2><div class="quests" id="quests"></div></section>
@@ -22,6 +22,7 @@
 <div class="eventModal" id="eventModal"><div class="eventBox"><div class="eventIcon" id="eventIcon">🎁</div><h2 id="eventTitle">地下城事件</h2><div id="eventBody"></div><div class="eventActions" id="eventActions"></div></div></div>
 <div class="toast" id="toast"></div>
 <script src="core.js"></script>
+<script src="unlimited.js"></script>
 <script src="questions.js"></script>
 <script src="events.js"></script>
 <script src="battle.js"></script>
