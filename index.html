@@ -4,17 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
 <meta name="theme-color" content="#17233f">
-<meta name="description" content="勇者學院 V4.13：30 大地下城、英文固定佔三分之一、答錯扣 HP、戰鬥音效；新增寵物蛋、六種可出戰寵物、寵物升級與 150 隻主線怪物圖鑑。">
-<title>勇者學院 V4.13｜寵物夥伴＋怪物圖鑑版</title>
+<meta name="description" content="勇者學院 V4.14：重做 30 關怪物 HP、敵人傷害與三階段 Boss 戰；題庫加入更大量動態數學、英文、科學與邏輯題，英文固定佔三分之一，最近 120 題與近期題型加強去重。">
+<title>勇者學院 V4.14｜戰鬥平衡＋大題庫版</title>
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="battle-v412.css">
 <link rel="stylesheet" href="pets-v413.css">
 </head>
 <body>
 <div class="app">
-<header class="top"><div class="brand">⚔️ 勇者學院 V4.13｜寵物夥伴＋怪物圖鑑版</div><div class="hud"><div class="pill">Lv.<span id="lv">1</span></div><div class="pill">⭐ <span id="stars">0</span></div><div class="pill">🪙 <span id="coins">0</span></div><div class="pill">🔥 Combo <span id="combo">0</span></div><div class="pill">🥚 <span id="eggCount">0</span></div><div class="pill">🍎 <span id="bagP">0</span>　🔷 <span id="bagE">0</span>　🔑 <span id="bagK">0</span></div></div></header>
-<section class="hero"><div><h1>打怪會掉寵物蛋，帶自己的夥伴一起冒險！</h1><p>怪獸現在有機率掉落 🥚 神秘寵物蛋。孵化可以收集勇氣小狼、守護小龜、九尾靈狐、魔法史萊姆、火焰幼龍與星光獨角獸；重複孵化會讓寵物升級，每隻都有真正的戰鬥能力。150 隻主線怪也正式加入怪物圖鑑。</p><button class="btn gold" onclick="startAdventure()">開始 30 關冒險 ⚔️</button> <button class="btn soft" onclick="resetGame()">重設遊戲</button></div><div class="art">🧑‍🚀⚔️🥚🐲</div></section>
-<section class="card"><h2>🗺️ 30 大地下城｜完成即鎖定</h2><p class="sub">未完成關卡可自由挑戰；已完成關卡不可再挑戰。英文約佔 1/3；答錯扣 HP；🔒 寶箱需鑰匙。Boss、精英怪與稀有怪的寵物蛋掉落率較高。</p><div class="map" id="map"></div></section>
+<header class="top"><div class="brand">⚔️ 勇者學院 V4.14｜戰鬥平衡＋大題庫版</div><div class="hud"><div class="pill">Lv.<span id="lv">1</span></div><div class="pill">⭐ <span id="stars">0</span></div><div class="pill">🪙 <span id="coins">0</span></div><div class="pill">🔥 Combo <span id="combo">0</span></div><div class="pill">🥚 <span id="eggCount">0</span></div><div class="pill">🍎 <span id="bagP">0</span>　🔷 <span id="bagE">0</span>　🔑 <span id="bagK">0</span></div></div></header>
+<section class="hero"><div><h1>越後面的地下城，現在真的越像一場冒險！</h1><p>30 關怪物 HP 與答錯傷害重新平衡，Boss 會在 65% 與 30% HP 進入新階段；最終 Boss 不再兩三招就結束。題庫同步大幅擴充，加入更多數學應用、分數小數、單位時間、科學、邏輯、英文單字文法與閱讀，並加強題目與題型去重。</p><button class="btn gold" onclick="startAdventure()">開始 30 關冒險 ⚔️</button> <button class="btn soft" onclick="resetGame()">重設遊戲</button></div><div class="art">🧑‍🚀⚔️📚🔥🐉</div></section>
+<section class="card"><h2>🗺️ 30 大地下城｜完成即鎖定</h2><p class="sub">未完成關卡可自由挑戰；已完成關卡不可再挑戰。英文固定約佔 1/3；最近 120 題加強避免重複。普通、進階、精英與 Boss 現在有不同成長曲線。</p><div class="map" id="map"></div></section>
 <section class="card"><div id="screen"></div></section>
 <section class="card"><h2>🐾 寵物夥伴</h2><p class="sub">孵化寵物蛋、收集六種夥伴並選一隻出戰。重複寵物會升級到 Lv.3，能力也會同步變強。</p><div id="petsPanel"></div></section>
 <section class="card"><h2>📖 怪物圖鑑</h2><p class="sub">30 關共有 150 隻主線怪。只有真正擊倒過的怪才會亮起；舊存檔已打過的怪會自動補進圖鑑。</p><div id="monsterDex"></div></section>
@@ -27,14 +27,17 @@
 <div class="toast" id="toast"></div>
 <script src="core.js"></script>
 <script src="worlds30.js"></script>
+<script src="balance-data-v414.js"></script>
 <script src="unlimited.js"></script>
 <script src="questions.js"></script>
 <script src="questions30.js"></script>
 <script src="english33.js"></script>
+<script src="questions-v414.js"></script>
 <script src="events.js"></script>
 <script src="chest-lock.js"></script>
 <script src="battle.js"></script>
 <script src="hp-penalty.js"></script>
+<script src="combat-v414.js"></script>
 <script src="audio-v412.js"></script>
 <script src="pets-v413.js"></script>
 </body>
