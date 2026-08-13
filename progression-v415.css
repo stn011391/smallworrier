@@ -1,0 +1,11 @@
+/* V4.15 six-generation progression UI */
+.genTop{display:flex;gap:12px;justify-content:space-between;align-items:center;flex-wrap:wrap;padding:10px 12px;margin-bottom:10px;border-radius:14px;background:#eef3fb}
+.genTop b{font-size:16px}.genTop span{font-size:12px;color:#607089}
+.genGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.genCard{padding:12px;border:2px solid #d6dfec;border-radius:16px;background:#fff;display:grid;gap:5px;min-height:132px}
+.genCard.current{border-color:#f0b33a;box-shadow:0 0 0 3px #ffd97833}
+.genCard.locked{opacity:.48;filter:grayscale(.8)}
+.genIcon{font-size:34px}.genCard b{font-size:15px}.genCard small{color:#64728a;line-height:1.25}.genSet{font-size:12px;font-weight:900}
+.chapterQuestTitle{grid-column:1/-1;font-weight:1000;padding:8px 10px;border-radius:12px;background:#eef3fb;margin-bottom:4px}
+@media(max-width:700px){.genGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.genCard{padding:9px;min-height:120px}.genIcon{font-size:28px}}
+@media(max-width:430px){.genGrid{grid-template-columns:1fr}.genCard{min-height:auto}.genTop{align-items:flex-start;flex-direction:column}}
