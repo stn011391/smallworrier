@@ -1,0 +1,135 @@
+/* V4.12 Battle layout fix: keep fighters visible and reserve a clear center stage. */
+.arena{
+  min-height:680px;
+  isolation:isolate;
+}
+.battleHud{
+  top:14px;
+  left:14px;
+  right:14px;
+  gap:8px;
+}
+.fighter{
+  padding:8px 10px;
+  font-size:14px;
+  line-height:1.2;
+  box-shadow:0 5px 14px #0d1d3822;
+}
+.fighter small{font-size:12px}
+.bar{height:10px;margin:3px 0}
+.heroChar{
+  left:9%;
+  bottom:205px;
+  font-size:clamp(76px,9vw,105px);
+  max-width:36%;
+  white-space:nowrap;
+}
+.monsterChar{
+  right:9%;
+  bottom:205px;
+  font-size:clamp(92px,11vw,128px);
+  max-width:36%;
+  white-space:nowrap;
+}
+.monsterChar.boss{font-size:clamp(110px,13vw,152px)}
+.command{
+  left:14px;
+  right:14px;
+  bottom:14px;
+  padding:9px 10px 10px;
+  max-height:185px;
+  overflow-y:auto;
+  box-shadow:0 -7px 18px #10213b25;
+}
+.status{font-size:16px;margin-bottom:7px}
+.actions{
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:7px;
+}
+.actions .btn{
+  min-width:0;
+  padding:8px 6px;
+  font-size:13px;
+  line-height:1.15;
+  box-shadow:0 3px 0 #0003;
+}
+.actions .btn small{font-size:11px}
+#sfxToggle{
+  border:0;
+  border-radius:99px;
+  padding:7px 11px;
+  font-weight:1000;
+  cursor:pointer;
+  background:#eef3fb;
+  color:#293750;
+}
+#sfxToggle.on{background:#e9fff0;color:#176b38}
+#sfxToggle.off{background:#fff0f2;color:#a3293d}
+
+@media(max-width:700px){
+  .arena{min-height:690px}
+  .battleHud{
+    grid-template-columns:1fr 1fr;
+    top:8px;
+    left:8px;
+    right:8px;
+    gap:5px;
+  }
+  .fighter{
+    padding:6px 7px;
+    font-size:11px;
+    border-radius:12px;
+  }
+  .fighter small{font-size:10px}
+  .bar{height:7px;margin:2px 0}
+  .heroChar{
+    left:6%;
+    bottom:238px;
+    font-size:clamp(62px,18vw,82px);
+    max-width:40%;
+  }
+  .monsterChar{
+    right:6%;
+    bottom:238px;
+    font-size:clamp(72px,21vw,96px);
+    max-width:40%;
+  }
+  .monsterChar.boss{font-size:clamp(86px,24vw,108px)}
+  .command{
+    left:8px;
+    right:8px;
+    bottom:8px;
+    padding:7px;
+    max-height:218px;
+    border-radius:15px;
+  }
+  .status{font-size:13px;line-height:1.25;margin-bottom:5px}
+  .actions{grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}
+  .actions .btn{
+    min-width:0;
+    padding:7px 3px;
+    border-radius:11px;
+    font-size:11px;
+    line-height:1.1;
+  }
+  .actions .btn small{font-size:9px}
+}
+
+@media(max-width:430px){
+  .arena{min-height:660px}
+  .heroChar{left:4%;bottom:230px;font-size:64px}
+  .monsterChar{right:4%;bottom:230px;font-size:78px}
+  .monsterChar.boss{font-size:92px}
+  .command{max-height:210px}
+  .actions .btn{min-width:0!important;padding:6px 2px!important;font-size:10.5px}
+}
+
+@media(max-width:360px){
+  .arena{min-height:650px}
+  .heroChar{font-size:57px;bottom:226px}
+  .monsterChar{font-size:70px;bottom:226px}
+  .monsterChar.boss{font-size:82px}
+  .fighter{font-size:10px;padding:5px}
+  .actions .btn{font-size:9.5px}
+}
