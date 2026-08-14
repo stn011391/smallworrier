@@ -4,19 +4,20 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
 <meta name="theme-color" content="#17233f">
-<meta name="description" content="勇者學院 V4.18：保留個人化學習能力地圖、兩階段錯題教學與間隔複習，並將學習能力地圖移到頁面最底部，讓孩子先專注冒險與遊戲流程，家長再查看學習分析。">
-<title>勇者學院 V4.18｜學習地圖底部版</title>
+<meta name="description" content="勇者學院 V4.19：能力地圖開始真正主導出題，加入 60/25/15 自適應學習比例、錯誤概念診斷，以及明天、3天、7天、21天的跨天間隔複習。">
+<title>勇者學院 V4.19｜真正自適應學習版</title>
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="battle-v412.css">
 <link rel="stylesheet" href="pets-v413.css">
 <link rel="stylesheet" href="progression-v415.css">
 <link rel="stylesheet" href="strategy-v416.css">
 <link rel="stylesheet" href="learning-v417.css">
+<link rel="stylesheet" href="adaptive-v419.css">
 </head>
 <body>
 <div class="app">
-<header class="top"><div class="brand">⚔️ 勇者學院 V4.18｜學習地圖底部版</div><div class="hud"><div class="pill">Lv.<span id="lv">1</span></div><div class="pill">⭐ <span id="stars">0</span></div><div class="pill">🪙 <span id="coins">0</span></div><div class="pill">🔥 Combo <span id="combo">0</span></div><div class="pill">🥚 <span id="eggCount">0</span></div><div class="pill">🍎 <span id="bagP">0</span>　🔷 <span id="bagE">0</span>　🔑 <span id="bagK">0</span></div></div></header>
-<section class="hero"><div><h1>現在遊戲會記住「哪裡真的會、哪裡還需要再學」！</h1><p>V4.18 保留個人化學習引擎：每一道題都會更新能力地圖；第一次答錯先給方法提示讓孩子再試一次，第二次仍錯才完整講解。錯過的知識點會在幾題後用變形題再次出現，答對後複習間隔逐步拉長。學習能力地圖現在移到頁面最底部，讓冒險流程更順暢。英文仍固定約佔總題目的 1/3。</p><button class="btn gold" onclick="startAdventure()">開始 30 關冒險 ⚔️</button> <button class="btn soft" onclick="resetGame()">重設遊戲</button></div><div class="art">🧑‍🚀⚔️🧠📚✨</div></section>
+<header class="top"><div class="brand">⚔️ 勇者學院 V4.19｜真正自適應學習版</div><div class="hud"><div class="pill">Lv.<span id="lv">1</span></div><div class="pill">⭐ <span id="stars">0</span></div><div class="pill">🪙 <span id="coins">0</span></div><div class="pill">🔥 Combo <span id="combo">0</span></div><div class="pill">🥚 <span id="eggCount">0</span></div><div class="pill">🍎 <span id="bagP">0</span>　🔷 <span id="bagE">0</span>　🔑 <span id="bagK">0</span></div></div></header>
+<section class="hero"><div><h1>現在不是題庫挑題，而是孩子的學習狀態決定下一題！</h1><p>V4.19 將能力地圖升級成真正的自適應學習核心：正常出題約 60% 配合目前程度、25% 強化弱項、15% 提供稍微超前的挑戰；答題速度也會影響難度。答錯時除了提示與解說，還會判斷可能的錯誤概念，例如周長/面積混淆、第三人稱單數、a/an、介系詞等。錯題同時建立跨天複習：明天、3 天、7 天、21 天再次確認。英文仍維持約 1/3。</p><button class="btn gold" onclick="startAdventure()">開始 30 關冒險 ⚔️</button> <button class="btn soft" onclick="resetGame()">重設遊戲</button></div><div class="art">🧑‍🚀⚔️🧠🎯📚</div></section>
 <section class="card"><h2>🗺️ 30 大地下城｜戰力建議＋自由越級</h2><p class="sub">🟢 適合挑戰、🟡 有點困難、🔴 極度危險、💀 越級挑戰。關卡仍全部自由選擇；越級勝利可獲金幣 / XP ×1.5，並增加額外寵物蛋機率。已完成關卡不可再次挑戰。</p><div class="map" id="map"></div></section>
 <section class="card"><div id="screen"></div></section>
 <section class="card"><h2>🏅 六大裝備世代</h2><p class="sub">青銅、白銀、黃金、魔法、龍魂、神話六大世代持續有效。每完成一個五關章節逐步解鎖下一世代，高階裝備只會在解鎖後進入商店與寶箱池。</p><div id="progressionPanel"></div></section>
@@ -24,7 +25,7 @@
 <section class="card"><h2>📖 怪物圖鑑</h2><p class="sub">30 關共有 150 隻主線怪。只有真正擊倒過的怪才會亮起；完成 30/30 後會進入最終完成畫面，可直接查看圖鑑、寵物與裝備收藏。</p><div id="monsterDex"></div></section>
 <section class="card"><h2>🎒 裝備與道具</h2><div id="inventory"></div></section>
 <section class="card"><h2>📜 本章任務</h2><div class="quests" id="quests"></div></section>
-<section class="card learning417Card"><h2>🧠 學習能力地圖</h2><p class="sub">不是只看總答對率，而是追蹤「乘法、分數、時間、介系詞、過去式、閱讀理解……」等細分知識點。系統會優先把錯過或尚未熟練的內容排入間隔複習。</p><div id="learningMap"></div></section>
+<section class="card learning417Card"><h2>🧠 學習能力地圖</h2><p class="sub">能力地圖維持在頁面最底部。除了熟練度，現在也會顯示目前優先加強項目、常見錯誤原因與跨天複習排程；這些資料會直接影響下一批題目的內容與難度。</p><div id="learningMap"></div></section>
 </div>
 <div class="qmodal" id="qModal"><div class="qbox"><div class="qtag" id="qTag"></div><h2 id="qTitle">答對才能出招</h2><div class="prompt" id="qPrompt"></div><div class="answers" id="qAnswers"></div></div></div>
 <div class="levelModal" id="levelModal"><div class="levelBox"><div style="font-size:82px">✨⚔️✨</div><h2>LEVEL UP!</h2><p id="levelText"></p><button class="btn purple" onclick="closeLevel()">繼續</button></div></div>
@@ -51,5 +52,7 @@
 <script src="element-v416.js"></script>
 <script src="flow-v416.js"></script>
 <script src="learning-v417.js"></script>
+<script src="adaptive-bank-v419.js"></script>
+<script src="adaptive-core-v419.js"></script>
 </body>
 </html>
