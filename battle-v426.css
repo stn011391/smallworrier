@@ -1,0 +1,32 @@
+/* V4.26: keep the active pet visibly beside the hero instead of using the old bottom-based position. */
+.petCompanion{
+  top:126px!important;
+  bottom:auto!important;
+  left:calc(12% + 76px)!important;
+  right:auto!important;
+  z-index:8!important;
+  font-size:clamp(42px,4.8vw,56px)!important;
+  line-height:1!important;
+  transform-origin:center bottom;
+}
+@media(max-width:700px){
+  .petCompanion{
+    top:108px!important;
+    left:calc(8% + 58px)!important;
+    font-size:42px!important;
+  }
+}
+@media(max-width:430px){
+  .petCompanion{
+    top:104px!important;
+    left:calc(6% + 47px)!important;
+    font-size:36px!important;
+  }
+}
+@media(max-width:360px){
+  .petCompanion{
+    top:102px!important;
+    left:calc(6% + 43px)!important;
+    font-size:33px!important;
+  }
+}
