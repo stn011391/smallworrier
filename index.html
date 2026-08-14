@@ -4,12 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
 <meta name="theme-color" content="#17233f">
-<meta name="description" content="勇者學院 V4.23：重新切分戰鬥舞台與招式操作區，縮短藍色背景高度、上移勇者與怪物，讓技能區不再遮住角色，同時保留大字與自適應學習核心。">
-<title>勇者學院 V4.23｜緊湊戰鬥舞台版</title>
+<meta name="description" content="勇者學院 V4.24：延續 V4.23 緊湊戰鬥舞台，提升屬性、弱點與抗性資訊列的文字對比，讓孩子更容易辨識戰鬥提示。">
+<title>勇者學院 V4.24｜戰鬥資訊高對比版</title>
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="battle-v412.css">
 <link rel="stylesheet" href="battle-v421.css">
 <link rel="stylesheet" href="battle-v423.css">
+<link rel="stylesheet" href="battle-v424.css">
 <link rel="stylesheet" href="pets-v413.css">
 <link rel="stylesheet" href="progression-v415.css">
 <link rel="stylesheet" href="strategy-v416.css">
@@ -19,8 +20,8 @@
 </head>
 <body>
 <div class="app">
-<header class="top"><div class="brand">⚔️ 勇者學院 V4.23｜緊湊戰鬥舞台版</div><div class="hud"><div class="pill">Lv.<span id="lv">1</span></div><div class="pill">⭐ <span id="stars">0</span></div><div class="pill">🪙 <span id="coins">0</span></div><div class="pill">🔥 Combo <span id="combo">0</span></div><div class="pill">🥚 <span id="eggCount">0</span></div><div class="pill">🍎 <span id="bagP">0</span>　🔷 <span id="bagE">0</span>　🔑 <span id="bagK">0</span></div></div></header>
-<section class="hero"><div><h1>角色留在舞台上，招式留在操作區！</h1><p>V4.23 把戰鬥畫面重新切成上下兩區：上半部專心顯示勇者、怪物與 HP / MP，下半部才放招式、弱點與 Boss 提示。藍色背景高度明顯縮短，招式不再覆蓋人物，同時保留孩子容易閱讀的大字按鈕。</p><button class="btn gold" onclick="startAdventure()">開始 30 關冒險 ⚔️</button> <button class="btn soft" onclick="resetGame()">重設遊戲</button></div><div class="art">🧑‍🚀⚔️🧠🎯📚</div></section>
+<header class="top"><div class="brand">⚔️ 勇者學院 V4.24｜戰鬥資訊高對比版</div><div class="hud"><div class="pill">Lv.<span id="lv">1</span></div><div class="pill">⭐ <span id="stars">0</span></div><div class="pill">🪙 <span id="coins">0</span></div><div class="pill">🔥 Combo <span id="combo">0</span></div><div class="pill">🥚 <span id="eggCount">0</span></div><div class="pill">🍎 <span id="bagP">0</span>　🔷 <span id="bagE">0</span>　🔑 <span id="bagK">0</span></div></div></header>
+<section class="hero"><div><h1>戰鬥資訊要清楚，孩子才知道下一招怎麼選！</h1><p>V4.24 保留 V4.23 的緊湊戰鬥舞台，並把「屬性／弱點／抗性」資訊列改成高對比深色卡片：標籤使用亮白字，關鍵內容使用醒目的亮黃色，手機版同步放大行距，讓孩子一眼就能辨認。</p><button class="btn gold" onclick="startAdventure()">開始 30 關冒險 ⚔️</button> <button class="btn soft" onclick="resetGame()">重設遊戲</button></div><div class="art">🧑‍🚀⚔️🧠🎯📚</div></section>
 <section class="card"><h2>🗺️ 30 大地下城｜戰力建議＋自由越級</h2><p class="sub">🟢 適合挑戰、🟡 有點困難、🔴 極度危險、💀 越級挑戰。關卡仍全部自由選擇；越級勝利可獲金幣 / XP ×1.5，並增加額外寵物蛋機率。已完成關卡不可再次挑戰。</p><div class="map" id="map"></div></section>
 <section class="card"><div id="screen"></div></section>
 <section class="card"><h2>🐾 寵物夥伴</h2><p class="sub">孵化寵物蛋、收集六種夥伴並選一隻出戰。寵物的攻擊、減傷、閃避、回 MP、火焰強化與掉蛋能力都會繼續影響戰鬥。</p><div id="petsPanel"></div></section>
