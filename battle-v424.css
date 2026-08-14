@@ -1,0 +1,22 @@
+/* V4.24: high-contrast elemental affinity information bar. */
+.v416Affinity{
+  color:#f7fbff!important;
+  background:linear-gradient(135deg,#182842,#0e1a2e)!important;
+  border:2px solid #8fb9ff!important;
+  box-shadow:inset 0 0 0 1px #ffffff12,0 2px 8px #07132635;
+  font-weight:800;
+  letter-spacing:.1px;
+  text-shadow:0 1px 1px #0008;
+}
+.v416Affinity b{
+  color:#ffe27a!important;
+  font-weight:1000;
+  text-shadow:0 1px 2px #000a;
+}
+@media(max-width:700px){
+  .v416Affinity{
+    font-size:11.5px!important;
+    line-height:1.25!important;
+    padding:6px 7px!important;
+  }
+}
