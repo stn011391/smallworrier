@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
 <meta name="theme-color" content="#17233f">
-<meta name="description" content="勇者學院 V4.25：新增每日 10～15 題個人化勇者訓練，依跨天複習與近期弱項設定今日目標，完成後提供學習成果報告與小獎勵；其餘自適應出題與戰鬥規則維持不變。">
-<title>勇者學院 V4.25｜今日勇者訓練版</title>
+<meta name="description" content="勇者學院 V4.26：強化題目去重與題型輪替，最近 180 題避免重複，並修正戰鬥畫面讓出戰寵物固定站在主人旁邊；保留每日個人化訓練、自適應學習與既有戰鬥規則。">
+<title>勇者學院 V4.26｜題庫去重＋寵物同行版</title>
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="battle-v412.css">
 <link rel="stylesheet" href="battle-v421.css">
@@ -18,15 +18,16 @@
 <link rel="stylesheet" href="learning-v422.css">
 <link rel="stylesheet" href="adaptive-v419.css">
 <link rel="stylesheet" href="daily-mission-v425.css">
+<link rel="stylesheet" href="battle-v426.css">
 </head>
 <body>
 <div class="app">
-<header class="top"><div class="brand">⚔️ 勇者學院 V4.25｜今日勇者訓練版</div><div class="hud"><div class="pill">Lv.<span id="lv">1</span></div><div class="pill">⭐ <span id="stars">0</span></div><div class="pill">🪙 <span id="coins">0</span></div><div class="pill">🔥 Combo <span id="combo">0</span></div><div class="pill">🥚 <span id="eggCount">0</span></div><div class="pill">🍎 <span id="bagP">0</span>　🔷 <span id="bagE">0</span>　🔑 <span id="bagK">0</span></div></div></header>
-<section class="hero"><div><h1>每天有目標，完成今天的勇者訓練！</h1><p>V4.25 只新增每日個人化學習任務：依今天到期複習與近期弱項，自動設定 10～15 題目標。完成後會顯示首答正確率、提示後答對、今日進步與明日待複習；原有自適應出題、錯題教學與戰鬥規則都不改。</p><button class="btn gold" onclick="startAdventure()">開始 30 關冒險 ⚔️</button> <button class="btn soft" onclick="resetGame()">重設遊戲</button></div><div class="art">🧑‍🚀⚔️🎯📚🏆</div></section>
+<header class="top"><div class="brand">⚔️ 勇者學院 V4.26｜題庫去重＋寵物同行版</div><div class="hud"><div class="pill">Lv.<span id="lv">1</span></div><div class="pill">⭐ <span id="stars">0</span></div><div class="pill">🪙 <span id="coins">0</span></div><div class="pill">🔥 Combo <span id="combo">0</span></div><div class="pill">🥚 <span id="eggCount">0</span></div><div class="pill">🍎 <span id="bagP">0</span>　🔷 <span id="bagE">0</span>　🔑 <span id="bagK">0</span></div></div></header>
+<section class="hero"><div><h1>題目更不容易重複，寵物也回到勇者身邊！</h1><p>V4.26 把最近題目的防重複記憶延長到 180 題，若同一題型短時間出現太密集，會優先改出同科目的其他題型；英文仍維持原本每 3 題固定 1 題。戰鬥畫面也重新定位出戰寵物，讓牠固定站在主人旁邊，不再被下方指令區遮住。每日 10～15 題個人化勇者訓練與自適應學習功能全部保留。</p><button class="btn gold" onclick="startAdventure()">開始 30 關冒險 ⚔️</button> <button class="btn soft" onclick="resetGame()">重設遊戲</button></div><div class="art">🧑‍🚀🐾⚔️📚✨</div></section>
 <section class="card daily425Card"><div id="dailyMission425"></div></section>
 <section class="card"><h2>🗺️ 30 大地下城｜戰力建議＋自由越級</h2><p class="sub">🟢 適合挑戰、🟡 有點困難、🔴 極度危險、💀 越級挑戰。關卡仍全部自由選擇；越級勝利可獲金幣 / XP ×1.5，並增加額外寵物蛋機率。已完成關卡不可再次挑戰。</p><div class="map" id="map"></div></section>
 <section class="card"><div id="screen"></div></section>
-<section class="card"><h2>🐾 寵物夥伴</h2><p class="sub">孵化寵物蛋、收集六種夥伴並選一隻出戰。寵物的攻擊、減傷、閃避、回 MP、火焰強化與掉蛋能力都會繼續影響戰鬥。</p><div id="petsPanel"></div></section>
+<section class="card"><h2>🐾 寵物夥伴</h2><p class="sub">孵化寵物蛋、收集六種夥伴並選一隻出戰。V4.26 起，出戰寵物會固定顯示在勇者身旁；攻擊、減傷、閃避、回 MP、火焰強化與掉蛋能力仍會繼續影響戰鬥。</p><div id="petsPanel"></div></section>
 <section class="card"><h2>🎒 裝備與道具</h2><div id="inventory"></div></section>
 <section class="card"><h2>📜 本章任務</h2><div class="quests" id="quests"></div></section>
 <section class="card"><h2>🏅 六大裝備世代</h2><p class="sub">青銅、白銀、黃金、魔法、龍魂、神話六大世代持續有效。每完成一個五關章節逐步解鎖下一世代，高階裝備只會在解鎖後進入商店與寶箱池。</p><div id="progressionPanel"></div></section>
@@ -61,5 +62,6 @@
 <script src="adaptive-bank-v419.js"></script>
 <script src="adaptive-core-v419.js"></script>
 <script src="daily-mission-v425.js"></script>
+<script src="question-variety-v426.js"></script>
 </body>
 </html>
