@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
 <meta name="theme-color" content="#17233f">
-<meta name="description" content="勇者學院 V4.28：新增五種答題互動模式、Boss 三階段戰鬥，以及寵物手動主動技與羈絆成長。保留每日冒險塔、180 題防重複、自適應學習、30 大地下城與裝備系統。">
-<title>勇者學院 V4.28｜互動題型＋Boss 三階段＋寵物羈絆</title>
+<meta name="description" content="勇者學院 V4.29：修正自己輸入答案在答錯重試後無法再次送出、看似當機的問題，並加入 Enter 送出與空白輸入防呆。保留五種互動題型、Boss 三階段、寵物羈絆、每日冒險塔與自適應學習。">
+<title>勇者學院 V4.29｜手動輸入穩定修正版</title>
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="battle-v412.css">
 <link rel="stylesheet" href="battle-v421.css">
@@ -24,8 +24,8 @@
 </head>
 <body>
 <div class="app">
-<header class="top"><div class="brand">⚔️ 勇者學院 V4.28｜互動冒險進化版</div><div class="hud"><div class="pill">Lv.<span id="lv">1</span></div><div class="pill">⭐ <span id="stars">0</span></div><div class="pill">🪙 <span id="coins">0</span></div><div class="pill">🔥 Combo <span id="combo">0</span></div><div class="pill">🥚 <span id="eggCount">0</span></div><div class="pill">🍎 <span id="bagP">0</span>　🔷 <span id="bagE">0</span>　🔑 <span id="bagK">0</span></div></div></header>
-<section class="hero"><div><h1>答題不再只有四選一，Boss 真的會變身，寵物技能也由你決定何時施放！</h1><p>V4.28 把學習玩法升級成五種互動：四選一、自己輸入、拖曳／點選配對、英文句子排序、YES／NO 快速判斷。Boss 戰加入三階段：70% HP 以下狂暴、30% 以下進入 FINAL PHASE，需要連續答對兩題 BREAK 護盾。寵物連續答對三題後改成 SKILL READY，由玩家自己決定施放時機，並新增羈絆 Lv.1～5 與 Lv.3 進化稱號。</p><button class="btn gold" onclick="startAdventure()">開始 30 關冒險 ⚔️</button> <button class="btn purple" onclick="v427StartTower()">挑戰每日冒險塔 🗼</button> <button class="btn soft" onclick="resetGame()">重設遊戲</button></div><div class="art">🧑‍🚀🐲⚔️🧩👑</div></section>
+<header class="top"><div class="brand">⚔️ 勇者學院 V4.29｜手動輸入穩定修正版</div><div class="hud"><div class="pill">Lv.<span id="lv">1</span></div><div class="pill">⭐ <span id="stars">0</span></div><div class="pill">🪙 <span id="coins">0</span></div><div class="pill">🔥 Combo <span id="combo">0</span></div><div class="pill">🥚 <span id="eggCount">0</span></div><div class="pill">🍎 <span id="bagP">0</span>　🔷 <span id="bagE">0</span>　🔑 <span id="bagK">0</span></div></div></header>
+<section class="hero"><div><h1>互動答題繼續保留，自己輸入答案現在不會再卡住！</h1><p>V4.29 修正「自己輸入答案」答錯一次後，唯一的送出按鈕被舊錯題教學鎖住而無法繼續的問題。現在按「我再想一次」會重新啟用送出、清除錯誤狀態並把游標放回輸入框；也支援 Enter 直接送出，空白內容不會被算成答錯。</p><button class="btn gold" onclick="startAdventure()">開始 30 關冒險 ⚔️</button> <button class="btn purple" onclick="v427StartTower()">挑戰每日冒險塔 🗼</button> <button class="btn soft" onclick="resetGame()">重設遊戲</button></div><div class="art">🧑‍🚀🐲⚔️⌨️✅</div></section>
 <section class="card daily425Card"><div id="dailyMission425"></div></section>
 <section class="card"><div id="dailyTower427"></div></section>
 <section class="card"><h2>🗺️ 30 大地下城｜戰力建議＋自由越級</h2><p class="sub">🟢 適合挑戰、🟡 有點困難、🔴 極度危險、💀 越級挑戰。關卡仍全部自由選擇；越級勝利可獲金幣 / XP ×1.5，並增加額外寵物蛋機率。已完成關卡不可再次挑戰。</p><div class="map" id="map"></div></section>
@@ -68,5 +68,6 @@
 <script src="question-variety-v426.js"></script>
 <script src="gameplay-v427.js"></script>
 <script src="gameplay-v428.js"></script>
+<script src="input-hotfix-v429.js"></script>
 </body>
 </html>
