@@ -95,6 +95,11 @@
     if(battle?.v427PetShield){const cut=battle.v427PetShield;battle.v427PetShield=0;d=Math.max(0,d-cut);petFx(`${petName()[0]} <b>守護盾擋下 ${cut} 傷害！</b>`)}
     return d;
   };
+  const oldAnswer427=answerQuestion;
+  answerQuestion=function(btn,i){
+    if(currentQ&&i!==currentQ.a&&st.petEnergy427){st.petEnergy427=0;store();setTimeout(decoratePet,0)}
+    return oldAnswer427.apply(this,arguments);
+  };
   const oldResolve427=resolveSkill;
   resolveSkill=function(ok){
     const before=battle,wasActive=!!before?.active;
