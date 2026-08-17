@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
 <meta name="theme-color" content="#17233f">
-<meta name="description" content="勇者學院 V4.27：新增戰鬥推薦技能、寵物連續答對三題觸發主動技能，以及每日冒險塔。塔內答題同步計入每日 10～15 題個人化訓練，並保留題庫去重、自適應學習、30 大地下城與裝備寵物系統。">
-<title>勇者學院 V4.27｜RPG 戰鬥強化＋每日冒險塔</title>
+<meta name="description" content="勇者學院 V4.28：新增五種答題互動模式、Boss 三階段戰鬥，以及寵物手動主動技與羈絆成長。保留每日冒險塔、180 題防重複、自適應學習、30 大地下城與裝備系統。">
+<title>勇者學院 V4.28｜互動題型＋Boss 三階段＋寵物羈絆</title>
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="battle-v412.css">
 <link rel="stylesheet" href="battle-v421.css">
@@ -20,21 +20,22 @@
 <link rel="stylesheet" href="daily-mission-v425.css">
 <link rel="stylesheet" href="battle-v426.css">
 <link rel="stylesheet" href="gameplay-v427.css">
+<link rel="stylesheet" href="gameplay-v428.css">
 </head>
 <body>
 <div class="app">
-<header class="top"><div class="brand">⚔️ 勇者學院 V4.27｜RPG 戰鬥強化版</div><div class="hud"><div class="pill">Lv.<span id="lv">1</span></div><div class="pill">⭐ <span id="stars">0</span></div><div class="pill">🪙 <span id="coins">0</span></div><div class="pill">🔥 Combo <span id="combo">0</span></div><div class="pill">🥚 <span id="eggCount">0</span></div><div class="pill">🍎 <span id="bagP">0</span>　🔷 <span id="bagE">0</span>　🔑 <span id="bagK">0</span></div></div></header>
-<section class="hero"><div><h1>現在更像真正的 RPG：會教你選技能，寵物也真的會出手！</h1><p>V4.27 戰鬥會依怪物弱點、Boss COUNTER、MP 與目前 HP 自動標出推薦技能；其他技能與藥水收進「更多技能」，畫面更容易操作。出戰寵物新增 3 格能量，連續答對 3 題會自動施放專屬主動技能，答錯則能量歸零。另外新增每日冒險塔，普通怪 ×2、精英 ×1、Boss ×1，每天換新怪，塔內答題同步計入每日個人化訓練。</p><button class="btn gold" onclick="startAdventure()">開始 30 關冒險 ⚔️</button> <button class="btn purple" onclick="v427StartTower()">挑戰每日冒險塔 🗼</button> <button class="btn soft" onclick="resetGame()">重設遊戲</button></div><div class="art">🧑‍🚀🐲⚔️🗼✨</div></section>
+<header class="top"><div class="brand">⚔️ 勇者學院 V4.28｜互動冒險進化版</div><div class="hud"><div class="pill">Lv.<span id="lv">1</span></div><div class="pill">⭐ <span id="stars">0</span></div><div class="pill">🪙 <span id="coins">0</span></div><div class="pill">🔥 Combo <span id="combo">0</span></div><div class="pill">🥚 <span id="eggCount">0</span></div><div class="pill">🍎 <span id="bagP">0</span>　🔷 <span id="bagE">0</span>　🔑 <span id="bagK">0</span></div></div></header>
+<section class="hero"><div><h1>答題不再只有四選一，Boss 真的會變身，寵物技能也由你決定何時施放！</h1><p>V4.28 把學習玩法升級成五種互動：四選一、自己輸入、拖曳／點選配對、英文句子排序、YES／NO 快速判斷。Boss 戰加入三階段：70% HP 以下狂暴、30% 以下進入 FINAL PHASE，需要連續答對兩題 BREAK 護盾。寵物連續答對三題後改成 SKILL READY，由玩家自己決定施放時機，並新增羈絆 Lv.1～5 與 Lv.3 進化稱號。</p><button class="btn gold" onclick="startAdventure()">開始 30 關冒險 ⚔️</button> <button class="btn purple" onclick="v427StartTower()">挑戰每日冒險塔 🗼</button> <button class="btn soft" onclick="resetGame()">重設遊戲</button></div><div class="art">🧑‍🚀🐲⚔️🧩👑</div></section>
 <section class="card daily425Card"><div id="dailyMission425"></div></section>
 <section class="card"><div id="dailyTower427"></div></section>
 <section class="card"><h2>🗺️ 30 大地下城｜戰力建議＋自由越級</h2><p class="sub">🟢 適合挑戰、🟡 有點困難、🔴 極度危險、💀 越級挑戰。關卡仍全部自由選擇；越級勝利可獲金幣 / XP ×1.5，並增加額外寵物蛋機率。已完成關卡不可再次挑戰。</p><div class="map" id="map"></div></section>
 <section class="card"><div id="screen"></div></section>
-<section class="card"><h2>🐾 寵物夥伴</h2><p class="sub">出戰寵物現在不只是被動加成：戰鬥中會顯示 3 格寵物能量，連續答對 3 題就會自動施放專屬技能。勇氣小狼與火焰幼龍會攻擊，守護小龜會開盾，九尾靈狐會保證閃避一次，魔法史萊姆回 MP，星光獨角獸則提供 HP／MP 祝福。</p><div id="petsPanel"></div></section>
+<section class="card"><h2>🐾 寵物夥伴｜主動技能＋羈絆</h2><p class="sub">連續答對 3 題後，寵物技能會進入 READY，不會自動浪費；點擊寵物下方的 SKILL! 才會施放。一起戰鬥與施放技能會增加羈絆 XP，羈絆 Lv.3 解鎖進化稱號，最高 Lv.5。</p><div id="petsPanel"></div></section>
 <section class="card"><h2>🎒 裝備與道具</h2><div id="inventory"></div></section>
 <section class="card"><h2>📜 本章任務</h2><div class="quests" id="quests"></div></section>
 <section class="card"><h2>🏅 六大裝備世代</h2><p class="sub">青銅、白銀、黃金、魔法、龍魂、神話六大世代持續有效。每完成一個五關章節逐步解鎖下一世代，高階裝備只會在解鎖後進入商店與寶箱池。</p><div id="progressionPanel"></div></section>
-<section class="card"><h2>📖 怪物圖鑑</h2><p class="sub">30 關共有 150 隻主線怪。只有真正擊倒過的怪才會亮起；完成 30/30 後會進入最終完成畫面，可直接查看圖鑑、寵物與裝備收藏。每日冒險塔屬於每日挑戰，不影響主線圖鑑完成度。</p><div id="monsterDex"></div></section>
-<section class="card learning417Card"><h2>🧠 學習能力地圖</h2><p class="sub">能力地圖固定放在頁面最底部。除了熟練度，也會顯示目前優先加強項目、常見錯誤原因與跨天複習排程；主線戰鬥與每日冒險塔都共用同一套自適應題庫。</p><div id="learningMap"></div></section>
+<section class="card"><h2>📖 怪物圖鑑</h2><p class="sub">30 關共有 150 隻主線怪。Boss 現在有真正的三階段戰鬥；每日冒險塔 Boss 也套用同樣規則。塔怪仍不影響主線圖鑑完成度。</p><div id="monsterDex"></div></section>
+<section class="card learning417Card"><h2>🧠 學習能力地圖</h2><p class="sub">五種互動題型仍共用同一套自適應學習、弱項診斷、跨天複習與 180 題防重複機制；只是改變答題互動方式，不會把學習紀錄拆成不同系統。</p><div id="learningMap"></div></section>
 </div>
 <div class="qmodal" id="qModal"><div class="qbox"><div class="qtag" id="qTag"></div><h2 id="qTitle">答對才能出招</h2><div class="prompt" id="qPrompt"></div><div class="answers" id="qAnswers"></div></div></div>
 <div class="levelModal" id="levelModal"><div class="levelBox"><div style="font-size:82px">✨⚔️✨</div><h2>LEVEL UP!</h2><p id="levelText"></p><button class="btn purple" onclick="closeLevel()">繼續</button></div></div>
@@ -66,5 +67,6 @@
 <script src="daily-mission-v425.js"></script>
 <script src="question-variety-v426.js"></script>
 <script src="gameplay-v427.js"></script>
+<script src="gameplay-v428.js"></script>
 </body>
 </html>
