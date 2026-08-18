@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
 <meta name="theme-color" content="#17233f">
-<meta name="description" content="勇者學院 V4.29：修正自己輸入答案在答錯重試後無法再次送出、看似當機的問題，並加入 Enter 送出與空白輸入防呆。保留五種互動題型、Boss 三階段、寵物羈絆、每日冒險塔與自適應學習。">
-<title>勇者學院 V4.29｜手動輸入穩定修正版</title>
+<meta name="description" content="勇者學院 V4.30：公開免登入版。任何人只要打開 GitHub Pages 公開網址就能直接遊玩，不需要 ChatGPT、GitHub 或其他帳號；遊戲進度保存在各自瀏覽器。保留五種互動題型、Boss 三階段、寵物羈絆、每日冒險塔、自適應學習與手動輸入修正。">
+<title>勇者學院 V4.30｜公開免登入版</title>
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="battle-v412.css">
 <link rel="stylesheet" href="battle-v421.css">
@@ -24,8 +24,8 @@
 </head>
 <body>
 <div class="app">
-<header class="top"><div class="brand">⚔️ 勇者學院 V4.29｜手動輸入穩定修正版</div><div class="hud"><div class="pill">Lv.<span id="lv">1</span></div><div class="pill">⭐ <span id="stars">0</span></div><div class="pill">🪙 <span id="coins">0</span></div><div class="pill">🔥 Combo <span id="combo">0</span></div><div class="pill">🥚 <span id="eggCount">0</span></div><div class="pill">🍎 <span id="bagP">0</span>　🔷 <span id="bagE">0</span>　🔑 <span id="bagK">0</span></div></div></header>
-<section class="hero"><div><h1>互動答題繼續保留，自己輸入答案現在不會再卡住！</h1><p>V4.29 修正「自己輸入答案」答錯一次後，唯一的送出按鈕被舊錯題教學鎖住而無法繼續的問題。現在按「我再想一次」會重新啟用送出、清除錯誤狀態並把游標放回輸入框；也支援 Enter 直接送出，空白內容不會被算成答錯。</p><button class="btn gold" onclick="startAdventure()">開始 30 關冒險 ⚔️</button> <button class="btn purple" onclick="v427StartTower()">挑戰每日冒險塔 🗼</button> <button class="btn soft" onclick="resetGame()">重設遊戲</button></div><div class="art">🧑‍🚀🐲⚔️⌨️✅</div></section>
+<header class="top"><div class="brand">⚔️ 勇者學院 V4.30｜公開免登入版</div><div class="hud"><div class="pill">🔓 免登入</div><div class="pill">Lv.<span id="lv">1</span></div><div class="pill">⭐ <span id="stars">0</span></div><div class="pill">🪙 <span id="coins">0</span></div><div class="pill">🔥 Combo <span id="combo">0</span></div><div class="pill">🥚 <span id="eggCount">0</span></div><div class="pill">🍎 <span id="bagP">0</span>　🔷 <span id="bagE">0</span>　🔑 <span id="bagK">0</span></div></div></header>
+<section class="hero"><div><h1>🔓 打開網址就能玩，不需要任何帳號登入！</h1><p>V4.30 正式改成公開分享入口：朋友、同學或家人只要打開 GitHub Pages 網址，就能直接開始玩，不需要 ChatGPT、GitHub 或其他帳號。每個人的遊戲進度會存在自己的瀏覽器裡，不會互相影響。</p><button class="btn gold" onclick="startAdventure()">開始 30 關冒險 ⚔️</button> <button class="btn purple" onclick="v427StartTower()">挑戰每日冒險塔 🗼</button> <button class="btn blue" onclick="v430SharePublicSite()">分享公開網址 🔗</button> <button class="btn soft" onclick="resetGame()">重設遊戲</button></div><div class="art">🧑‍🚀🐲⚔️🔓🌐</div></section>
 <section class="card daily425Card"><div id="dailyMission425"></div></section>
 <section class="card"><div id="dailyTower427"></div></section>
 <section class="card"><h2>🗺️ 30 大地下城｜戰力建議＋自由越級</h2><p class="sub">🟢 適合挑戰、🟡 有點困難、🔴 極度危險、💀 越級挑戰。關卡仍全部自由選擇；越級勝利可獲金幣 / XP ×1.5，並增加額外寵物蛋機率。已完成關卡不可再次挑戰。</p><div class="map" id="map"></div></section>
@@ -69,5 +69,6 @@
 <script src="gameplay-v427.js"></script>
 <script src="gameplay-v428.js"></script>
 <script src="input-hotfix-v429.js"></script>
+<script src="public-v430.js"></script>
 </body>
 </html>
