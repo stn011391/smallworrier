@@ -1,4 +1,4 @@
-// V4.34 bridge: battle-only main-story stage. No continue/next-monster page.
+// V4.35 bridge: keep battle-only main story and label the expanded-question release.
 (()=>{
   const hideMainSubtitle=()=>{
     if(battle?.tower427)return;
@@ -27,31 +27,32 @@
     };
   }
 
-  function applyV434Labels(){
-    document.title='勇者學院 V4.34｜純戰鬥主線版';
+  function applyV435Labels(){
+    document.title='勇者學院 V4.35｜大題庫版';
     const meta=document.querySelector('meta[name="description"]');
-    if(meta)meta.content='勇者學院 V4.34：主線取消「繼續前進／下一隻怪物」畫面，只保留單一戰鬥舞台。進入地下城後直接顯示戰鬥，擊敗怪物後下一隻直接換進同一戰鬥區。所有題目維持四選一。';
+    if(meta)meta.content='勇者學院 V4.35：大幅擴充數學、英文、科學與邏輯題庫。同一學習概念加入更多問法與情境，最終防重複歷史延長到 500 題；保留純戰鬥主線、四選一、自適應學習與英文 1/3。';
     const brand=document.querySelector('.brand');
-    if(brand)brand.textContent='⚔️ 勇者學院 V4.34｜純戰鬥主線版';
+    if(brand)brand.textContent='⚔️ 勇者學院 V4.35｜大題庫版';
     const hero=document.querySelector('.hero');
     if(hero){
       const h=hero.querySelector('h1');
       const p=hero.querySelector('p');
-      if(h)h.textContent='主線只顯示戰鬥畫面，打完一隻直接接下一隻！';
-      if(p)p.textContent='V4.34 完全取消主線中的「繼續前進」與下一隻怪物預告區塊。進入地下城後直接停留在同一個戰鬥舞台，怪物被擊敗後下一隻直接換上場；題目全部維持四選一。';
+      if(h)h.textContent='題庫大幅擴充，同一概念不再一直看到相似題！';
+      if(p)p.textContent='V4.35 新增大量動態題型：數學不只換數字，還加入應用、反推、比較與不同情境；英文增加字彙、拼字、時態、複數、文法與短閱讀；科學與邏輯題也同步擴充。一般出題的最終防重複紀錄提升到 500 題。';
     }
   }
 
-  function loadV434(){
-    if(window.v434BattleOnly){applyV434Labels();return;}
+  function loadBattleOnly(){
+    if(window.v434BattleOnly){applyV435Labels();return;}
     if(document.querySelector('script[data-v434]'))return;
     const s=document.createElement('script');
     s.src='battle-only-v434.js';
     s.dataset.v434='1';
-    s.onload=applyV434Labels;
+    s.onload=applyV435Labels;
     document.body.appendChild(s);
   }
 
   hideMainSubtitle();
-  loadV434();
+  loadBattleOnly();
+  setTimeout(applyV435Labels,0);
 })();
