@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
 <meta name="theme-color" content="#17233f">
-<meta name="description" content="勇者學院 V4.32：移除主線戰鬥區中沒有操作功能的怪物推進說明文字，讓戰鬥畫面更精簡。保留線性主線、怪物依序遭遇、全四選一、公開免登入、Boss 三階段、寵物羈絆、每日冒險塔、自適應學習與防重複題庫。">
-<title>勇者學院 V4.32｜精簡戰鬥介面</title>
+<meta name="description" content="勇者學院 V4.34：主線只保留單一戰鬥畫面，取消繼續前進與下一隻怪物預告區塊；進入地下城後直接戰鬥，擊敗一隻後下一隻直接換進同一戰鬥區。所有學習題維持四選一。">
+<title>勇者學院 V4.34｜純戰鬥主線版</title>
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="battle-v412.css">
 <link rel="stylesheet" href="battle-v421.css">
@@ -25,8 +25,8 @@
 </head>
 <body>
 <div class="app">
-<header class="top"><div class="brand">⚔️ 勇者學院 V4.32｜精簡戰鬥版</div><div class="hud"><div class="pill">🔓 免登入</div><div class="pill">Lv.<span id="lv">1</span></div><div class="pill">⭐ <span id="stars">0</span></div><div class="pill">🪙 <span id="coins">0</span></div><div class="pill">🔥 Combo <span id="combo">0</span></div><div class="pill">🥚 <span id="eggCount">0</span></div><div class="pill">🍎 <span id="bagP">0</span>　🔷 <span id="bagE">0</span>　🔑 <span id="bagK">0</span></div></div></header>
-<section class="hero"><div><h1>一路往前冒險，不用再煩惱要選哪一關！</h1><p>V4.32 延續線性主線與全四選一玩法，並進一步精簡戰鬥畫面，移除沒有操作功能的重複說明文字，讓玩家更快看到怪物、技能與戰鬥資訊。</p><button class="btn gold" onclick="startAdventure()">繼續主線冒險 ⚔️</button> <button class="btn purple" onclick="v427StartTower()">挑戰每日冒險塔 🗼</button> <button class="btn blue" onclick="v430SharePublicSite()">分享公開網址 🔗</button> <button class="btn soft" onclick="resetGame()">重設遊戲</button></div><div class="art">🧑‍🚀➡️🐺➡️🐲🏆</div></section>
+<header class="top"><div class="brand">⚔️ 勇者學院 V4.34｜純戰鬥主線版</div><div class="hud"><div class="pill">🔓 免登入</div><div class="pill">Lv.<span id="lv">1</span></div><div class="pill">⭐ <span id="stars">0</span></div><div class="pill">🪙 <span id="coins">0</span></div><div class="pill">🔥 Combo <span id="combo">0</span></div><div class="pill">🥚 <span id="eggCount">0</span></div><div class="pill">🍎 <span id="bagP">0</span>　🔷 <span id="bagE">0</span>　🔑 <span id="bagK">0</span></div></div></header>
+<section class="hero"><div><h1>主線只顯示戰鬥畫面，打完一隻直接接下一隻！</h1><p>V4.34 完全取消主線中的「繼續前進」與下一隻怪物預告區塊。進入地下城後直接停留在同一個戰鬥舞台，怪物被擊敗後下一隻直接換上場；題目全部維持四選一。</p><button class="btn gold" onclick="startAdventure()">繼續主線冒險 ⚔️</button> <button class="btn purple" onclick="v427StartTower()">挑戰每日冒險塔 🗼</button> <button class="btn blue" onclick="v430SharePublicSite()">分享公開網址 🔗</button> <button class="btn soft" onclick="resetGame()">重設遊戲</button></div><div class="art">🧑‍🚀⚔️🐺➡️🐲</div></section>
 <section class="card daily425Card"><div id="dailyMission425"></div></section>
 <section class="card"><div id="dailyTower427"></div></section>
 <section class="card"><h2>🗺️ 30 大地下城｜主線一關一關推進</h2><p class="sub">只顯示目前主線位置與下一個目標。完成現在的 Dungeon 後，系統會自動開啟下一關，不再自由跳關或越級選關。</p><div class="map" id="map"></div></section>
@@ -35,7 +35,7 @@
 <section class="card"><h2>🎒 裝備與道具</h2><div id="inventory"></div></section>
 <section class="card"><h2>📜 本章任務</h2><div class="quests" id="quests"></div></section>
 <section class="card"><h2>🏅 六大裝備世代</h2><p class="sub">青銅、白銀、黃金、魔法、龍魂、神話六大世代持續有效。每完成一個五關章節逐步解鎖下一世代，高階裝備只會在解鎖後進入商店與寶箱池。</p><div id="progressionPanel"></div></section>
-<section class="card"><h2>📖 怪物圖鑑</h2><p class="sub">30 關共有 150 隻主線怪；每關怪物現在依序遭遇，擊敗前一隻才會出現下一隻，第 5 隻固定為 Boss。每日冒險塔仍是獨立挑戰。</p><div id="monsterDex"></div></section>
+<section class="card"><h2>📖 怪物圖鑑</h2><p class="sub">30 關共有 150 隻主線怪；每關怪物依序出戰，第 5 隻固定為 Boss。主線戰鬥區不再顯示下一隻怪物預告或前進按鈕。</p><div id="monsterDex"></div></section>
 <section class="card learning417Card"><h2>🧠 學習能力地圖</h2><p class="sub">所有題目統一為四選一，仍共用自適應學習、弱項診斷、跨天複習與 180 題防重複機制；只簡化答題方式，不會清除既有學習紀錄。</p><div id="learningMap"></div></section>
 </div>
 <div class="qmodal" id="qModal"><div class="qbox"><div class="qtag" id="qTag"></div><h2 id="qTitle">🎯 四選一｜選出正確答案</h2><div class="prompt" id="qPrompt"></div><div class="answers" id="qAnswers"></div></div></div>
@@ -72,6 +72,6 @@
 <script src="input-hotfix-v429.js"></script>
 <script src="public-v430.js"></script>
 <script src="linear-v431.js"></script>
-<script src="clean-battle-v432.js"></script>
+<script src="clean-battle-v432.js?v=434"></script>
 </body>
 </html>
