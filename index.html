@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
 <meta name="theme-color" content="#17233f">
-<meta name="description" content="勇者學院 V4.34：主線只保留單一戰鬥畫面，取消繼續前進與下一隻怪物預告區塊；進入地下城後直接戰鬥，擊敗一隻後下一隻直接換進同一戰鬥區。所有學習題維持四選一。">
-<title>勇者學院 V4.34｜純戰鬥主線版</title>
+<meta name="description" content="勇者學院 V4.35：大幅擴充數學、英文、科學與邏輯題庫。同一學習概念加入更多問法與情境，最終防重複歷史延長到 500 題；保留純戰鬥主線、四選一、自適應學習與英文 1/3。">
+<title>勇者學院 V4.35｜大題庫版</title>
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="battle-v412.css">
 <link rel="stylesheet" href="battle-v421.css">
@@ -25,8 +25,8 @@
 </head>
 <body>
 <div class="app">
-<header class="top"><div class="brand">⚔️ 勇者學院 V4.34｜純戰鬥主線版</div><div class="hud"><div class="pill">🔓 免登入</div><div class="pill">Lv.<span id="lv">1</span></div><div class="pill">⭐ <span id="stars">0</span></div><div class="pill">🪙 <span id="coins">0</span></div><div class="pill">🔥 Combo <span id="combo">0</span></div><div class="pill">🥚 <span id="eggCount">0</span></div><div class="pill">🍎 <span id="bagP">0</span>　🔷 <span id="bagE">0</span>　🔑 <span id="bagK">0</span></div></div></header>
-<section class="hero"><div><h1>主線只顯示戰鬥畫面，打完一隻直接接下一隻！</h1><p>V4.34 完全取消主線中的「繼續前進」與下一隻怪物預告區塊。進入地下城後直接停留在同一個戰鬥舞台，怪物被擊敗後下一隻直接換上場；題目全部維持四選一。</p><button class="btn gold" onclick="startAdventure()">繼續主線冒險 ⚔️</button> <button class="btn purple" onclick="v427StartTower()">挑戰每日冒險塔 🗼</button> <button class="btn blue" onclick="v430SharePublicSite()">分享公開網址 🔗</button> <button class="btn soft" onclick="resetGame()">重設遊戲</button></div><div class="art">🧑‍🚀⚔️🐺➡️🐲</div></section>
+<header class="top"><div class="brand">⚔️ 勇者學院 V4.35｜大題庫版</div><div class="hud"><div class="pill">🔓 免登入</div><div class="pill">Lv.<span id="lv">1</span></div><div class="pill">⭐ <span id="stars">0</span></div><div class="pill">🪙 <span id="coins">0</span></div><div class="pill">🔥 Combo <span id="combo">0</span></div><div class="pill">🥚 <span id="eggCount">0</span></div><div class="pill">🍎 <span id="bagP">0</span>　🔷 <span id="bagE">0</span>　🔑 <span id="bagK">0</span></div></div></header>
+<section class="hero"><div><h1>題庫大幅擴充，同一概念不再一直看到相似題！</h1><p>V4.35 新增大量動態題型：數學不只換數字，還加入應用、反推、比較與不同情境；英文增加字彙、拼字、時態、複數、文法與短閱讀；科學與邏輯題也同步擴充。一般出題的最終防重複紀錄提升到 500 題。</p><button class="btn gold" onclick="startAdventure()">繼續主線冒險 ⚔️</button> <button class="btn purple" onclick="v427StartTower()">挑戰每日冒險塔 🗼</button> <button class="btn blue" onclick="v430SharePublicSite()">分享公開網址 🔗</button> <button class="btn soft" onclick="resetGame()">重設遊戲</button></div><div class="art">🧠📚⚔️🐲</div></section>
 <section class="card daily425Card"><div id="dailyMission425"></div></section>
 <section class="card"><div id="dailyTower427"></div></section>
 <section class="card"><h2>🗺️ 30 大地下城｜主線一關一關推進</h2><p class="sub">只顯示目前主線位置與下一個目標。完成現在的 Dungeon 後，系統會自動開啟下一關，不再自由跳關或越級選關。</p><div class="map" id="map"></div></section>
@@ -36,7 +36,7 @@
 <section class="card"><h2>📜 本章任務</h2><div class="quests" id="quests"></div></section>
 <section class="card"><h2>🏅 六大裝備世代</h2><p class="sub">青銅、白銀、黃金、魔法、龍魂、神話六大世代持續有效。每完成一個五關章節逐步解鎖下一世代，高階裝備只會在解鎖後進入商店與寶箱池。</p><div id="progressionPanel"></div></section>
 <section class="card"><h2>📖 怪物圖鑑</h2><p class="sub">30 關共有 150 隻主線怪；每關怪物依序出戰，第 5 隻固定為 Boss。主線戰鬥區不再顯示下一隻怪物預告或前進按鈕。</p><div id="monsterDex"></div></section>
-<section class="card learning417Card"><h2>🧠 學習能力地圖</h2><p class="sub">所有題目統一為四選一，仍共用自適應學習、弱項診斷、跨天複習與 180 題防重複機制；只簡化答題方式，不會清除既有學習紀錄。</p><div id="learningMap"></div></section>
+<section class="card learning417Card"><h2>🧠 學習能力地圖</h2><p class="sub">所有題目維持四選一，並保留自適應學習、弱項診斷與跨天複習。V4.35 另外加入大型動態題庫與 500 題最終防重複紀錄；錯題複習仍可刻意重現同一概念。</p><div id="learningMap"></div></section>
 </div>
 <div class="qmodal" id="qModal"><div class="qbox"><div class="qtag" id="qTag"></div><h2 id="qTitle">🎯 四選一｜選出正確答案</h2><div class="prompt" id="qPrompt"></div><div class="answers" id="qAnswers"></div></div></div>
 <div class="levelModal" id="levelModal"><div class="levelBox"><div style="font-size:82px">✨⚔️✨</div><h2>LEVEL UP!</h2><p id="levelText"></p><button class="btn purple" onclick="closeLevel()">繼續</button></div></div>
@@ -72,6 +72,8 @@
 <script src="input-hotfix-v429.js"></script>
 <script src="public-v430.js"></script>
 <script src="linear-v431.js"></script>
-<script src="clean-battle-v432.js?v=434"></script>
+<script src="clean-battle-v432.js?v=435"></script>
+<script src="question-bank-v434.js?v=435"></script>
+<script src="question-quality-v435.js?v=435"></script>
 </body>
 </html>
