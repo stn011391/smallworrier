@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
 <meta name="theme-color" content="#17233f">
-<meta name="description" content="勇者學院 V4.36：修正 Boss FINAL PHASE 護盾造成長時間打不完的問題。破盾改為累積答對 2 題，答錯不會清空進度，並修正破盾瞬間卡在 1 HP 的邊界情況。保留 V4.35 大題庫、純戰鬥主線、四選一、自適應學習與英文 1/3。">
-<title>勇者學院 V4.36｜Boss 戰修正版</title>
+<meta name="description" content="勇者學院 V4.37：修正主線戰鬥誤判勝利造成同一隻怪反覆重生的問題；只有真正記錄為已擊敗且戰鬥結束後才會自動切到下一隻。Boss 累積破盾與 1 HP 防卡修正持續保留。保留 V4.35 大題庫、純戰鬥主線、四選一、自適應學習與英文 1/3。">
+<title>勇者學院 V4.37｜戰鬥防卡修正版</title>
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="battle-v412.css">
 <link rel="stylesheet" href="battle-v421.css">
@@ -25,8 +25,8 @@
 </head>
 <body>
 <div class="app">
-<header class="top"><div class="brand">⚔️ 勇者學院 V4.36｜Boss 戰修正版</div><div class="hud"><div class="pill">🔓 免登入</div><div class="pill">Lv.<span id="lv">1</span></div><div class="pill">⭐ <span id="stars">0</span></div><div class="pill">🪙 <span id="coins">0</span></div><div class="pill">🔥 Combo <span id="combo">0</span></div><div class="pill">🥚 <span id="eggCount">0</span></div><div class="pill">🍎 <span id="bagP">0</span>　🔷 <span id="bagE">0</span>　🔑 <span id="bagK">0</span></div></div></header>
-<section class="hero"><div><h1>月球基地司令現在可以正常打完了！</h1><p>V4.36 修正 Boss 最後階段的破盾規則：現在只要累積答對 2 題就能 BREAK，答錯不會把進度全部歸零；如果破盾瞬間 Boss 被舊判定卡在 1 HP，也會直接完成擊殺。V4.35 的大題庫與 500 題防重複機制全部保留。</p><button class="btn gold" onclick="startAdventure()">繼續主線冒險 ⚔️</button> <button class="btn purple" onclick="v427StartTower()">挑戰每日冒險塔 🗼</button> <button class="btn blue" onclick="v430SharePublicSite()">分享公開網址 🔗</button> <button class="btn soft" onclick="resetGame()">重設遊戲</button></div><div class="art">🚀👑🛡️💥⚔️</div></section>
+<header class="top"><div class="brand">⚔️ 勇者學院 V4.37｜Boss 戰修正版</div><div class="hud"><div class="pill">🔓 免登入</div><div class="pill">Lv.<span id="lv">1</span></div><div class="pill">⭐ <span id="stars">0</span></div><div class="pill">🪙 <span id="coins">0</span></div><div class="pill">🔥 Combo <span id="combo">0</span></div><div class="pill">🥚 <span id="eggCount">0</span></div><div class="pill">🍎 <span id="bagP">0</span>　🔷 <span id="bagE">0</span>　🔑 <span id="bagK">0</span></div></div></header>
+<section class="hero"><div><h1>修正同一隻怪反覆重生的卡關問題</h1><p>V4.37 修正自動接戰的勝利判定：只有怪物真的被記錄為已擊敗、戰鬥也確實結束時，才會切換到下一隻。Boss 護盾擋下致命攻擊時會留在原戰鬥繼續打，不會誤跳流程後又滿血重生。</p><button class="btn gold" onclick="startAdventure()">繼續主線冒險 ⚔️</button> <button class="btn purple" onclick="v427StartTower()">挑戰每日冒險塔 🗼</button> <button class="btn blue" onclick="v430SharePublicSite()">分享公開網址 🔗</button> <button class="btn soft" onclick="resetGame()">重設遊戲</button></div><div class="art">🚀👑🛡️💥⚔️</div></section>
 <section class="card daily425Card"><div id="dailyMission425"></div></section>
 <section class="card"><div id="dailyTower427"></div></section>
 <section class="card"><h2>🗺️ 30 大地下城｜主線一關一關推進</h2><p class="sub">只顯示目前主線位置與下一個目標。完成現在的 Dungeon 後，系統會自動開啟下一關，不再自由跳關或越級選關。</p><div class="map" id="map"></div></section>
@@ -72,9 +72,9 @@
 <script src="input-hotfix-v429.js"></script>
 <script src="public-v430.js"></script>
 <script src="linear-v431.js"></script>
-<script src="clean-battle-v432.js?v=436"></script>
-<script src="question-bank-v434.js?v=436"></script>
-<script src="question-quality-v435.js?v=436"></script>
-<script src="boss-hotfix-v436.js?v=436"></script>
+<script src="clean-battle-v432.js?v=437"></script>
+<script src="question-bank-v434.js?v=437"></script>
+<script src="question-quality-v435.js?v=437"></script>
+<script src="boss-hotfix-v436.js?v=437"></script>
 </body>
 </html>
