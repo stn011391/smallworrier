@@ -62,13 +62,27 @@
     return r;
   };
 
-  // Suppress every legacy "continue / next area" button after a main-story victory.
+  // Suppress every legacy "continue / next area" button after a CONFIRMED main-story victory.
+  // Important: some Boss wrappers can reject a lethal hit while FINAL PHASE shield is still active.
+  // In that case battle stays active and the monster is NOT recorded as defeated; never auto-advance.
   let pendingAdvance=false;
   const oldWinBattle434=winBattle;
   winBattle=function(){
-    const main=!!battle&&!battle.rare&&!battle.tower427;
+    const b=battle;
+    const main=!!b&&!b.rare&&!b.tower427;
     const r=oldWinBattle434.apply(this,arguments);
     if(!main)return r;
+
+    const defeatedNow=Array.isArray(st.defeated?.[b.world])&&st.defeated[b.world].includes(b.index);
+    const confirmedWin=defeatedNow&&!b.active;
+
+    if(!confirmedWin){
+      // Boss shield / guard intercepted the kill. Stay on this monster and keep fighting.
+      pendingAdvance=false;
+      if($('actions')&&b.active&&typeof skillButtons==='function')$('actions').innerHTML=skillButtons();
+      return r;
+    }
+
     if($('actions'))$('actions').innerHTML='';
     pendingAdvance=true;
     setTimeout(v434Advance,420);
